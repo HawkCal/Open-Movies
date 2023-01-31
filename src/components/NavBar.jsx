@@ -10,16 +10,16 @@ export default function NavBar() {
   return (
     <ul className='navBar'>
       <li className='navItem'>
-        <Link to='/Open-Movies'>Movies</Link>
+        <Link to='/'>Movies</Link>
       </li>
       <li className='navItem'>
         {
           user ?
-            <Link to='/Open-Movies/account'>Account</Link>
+            <Link to='/account'>Account</Link>
             :
             <Link
-              to='/Open-Movies/login'
-              state={{ previousRoute: [ '/Open-Movies/login', '/Open-Movies/register' ].includes(location.pathname) ? '/Open-Movies' : location.pathname }}
+              to='/login'
+              state={{ previousRoute: [ '/login', '/register' ].includes(location.pathname) ? '/' : location.pathname }}
             >Log In
             </Link>
         }
