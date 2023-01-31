@@ -25,7 +25,7 @@ export default function Account() {
   }, [ user, loading ]);
 
   function reviewClickHandler(movieId) {
-    navigate(`/${movieId}`);
+    navigate(`/Open-Movies/${movieId}`);
   }
 
   async function handleDelete() {
@@ -44,7 +44,7 @@ export default function Account() {
               <h2>{userData.userName}</h2>
               <p>{userData.email}</p>
               <button className='baseBtn' onClick={signUserOut}>Sign Out</button>
-              <Link to='/resetpassword'>Reset Password</Link>
+              <Link to='/Open-Movies/resetpassword'>Reset Password</Link>
               <button className='baseBtn' onClick={handleDelete}>Delete Account</button>
             </div>
             <h3>Reviews</h3>

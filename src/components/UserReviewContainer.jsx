@@ -33,7 +33,11 @@ export default function UserReviewContainer({
               :
               <ReviewInput movieId={movieId} movieTitle={movieTitle} userId={user.uid} userName={userInfo ? userInfo.userName : ''} />
             :
-            <Link to='/login' state={{ previousRoute: [ '/login', '/register' ].includes(previousPathName) ? '/' : previousPathName }}>Log in or register to leave a review</Link>
+            <Link
+              to='/Open-Movies/login'
+              state={{ previousRoute: [ '/Open-Movies/login', '/Open-Movies/register' ].includes(previousPathName) ? '/Open-Movies' : previousPathName }}
+            >Log in or register to leave a review
+            </Link>
       }
     </div>
   );
