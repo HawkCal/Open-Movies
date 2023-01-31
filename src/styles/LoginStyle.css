@@ -47,12 +47,7 @@
   border: 1px solid #000;
 }
 
-#loginSubmit:hover {
-  cursor: pointer;
-  color: #f5f5f5;
-  background-color: #111721;
-  border: 1px solid #f5f5f5;
-}
+
 
 .error,
 .inputContainer>.error:focus {
@@ -62,4 +57,13 @@
 
 .inputErrorText {
   color: red;
+}
+
+@media (hover: hover) {
+  #loginSubmit:hover {
+    cursor: pointer;
+    color: #f5f5f5;
+    background-color: #111721;
+    border: 1px solid #f5f5f5;
+  }
 }
