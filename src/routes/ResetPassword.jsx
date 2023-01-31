@@ -17,7 +17,27 @@ export default function ResetPassword() {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    if (emailValue.length === 0) {
+      setEmailClassName('error');
+      setEmailErrorText('Enter your email');
+      return;
+    }
+    else {
+      setEmailClassName('');
+      setEmailErrorText(null);
+    }
+
     const response = await resetPassword(emailValue);
+
+    if (response.includes('user-not-found')) {
+      setEmailClassName('error');
+      setEmailErrorText(response);
+      return;
+    }
+    else {
+      setEmailClassName('');
+      setEmailErrorText(null);
+    }
 
     if (response && response.includes('email')) {
       setEmailClassName('error');

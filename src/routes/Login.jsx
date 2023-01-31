@@ -55,6 +55,16 @@ export default function Login() {
     const response = await logInWithEmailAndPassword(emailValue, passwordValue);
     if (!response) return;
 
+    if (response.includes('user-not-found')) {
+      setEmailClassName('error');
+      setEmailErrorText(response);
+      return;
+    }
+    else {
+      setEmailClassName('');
+      setEmailErrorText(null);
+    }
+
     if (response.includes('email')) {
       setEmailClassName('error');
       setEmailErrorText(response);
