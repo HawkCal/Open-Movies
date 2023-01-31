@@ -8,7 +8,7 @@ import '../styles/LoginStyle.css';
 
 export default function Login() {
   const { state } = useLocation();
-  const previousRoute = state ? state.previousRoute : '/';
+  const previousRoute = state ? state.previousRoute : '/Open-Movies';
   const [ user, loading, error ] = useAuthState(auth);
   const [ emailValue, setEmailValue ] = useState('');
   const [ emailClassName, setEmailClassName ] = useState('');
@@ -115,9 +115,9 @@ export default function Login() {
               </div>
             </form>
             <div>
-              <Link to='/resetpassword'>Forgot your password?</Link>
+              <Link to='/Open-Movies/resetpassword'>Forgot your password?</Link>
               <br />
-              <Link to='/register' state={{ previousRoute: previousRoute }}>Don't have an account? Register</Link>
+              <Link to='/Open-Movies/register' state={{ previousRoute: previousRoute }}>Don't have an account? Register</Link>
             </div>
           </div>
       }

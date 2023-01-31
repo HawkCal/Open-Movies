@@ -52,7 +52,7 @@ export default function ResetPassword() {
             </div>
           </form>
       }
-      <Link to='/login' state={{ previousRoute: location.pathname }}>Log in</Link>
+      <Link to='/Open-Movies/login' state={{ previousRoute: location.pathname }}>Log in</Link>
     </div>
   );
 }

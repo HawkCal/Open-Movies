@@ -25,7 +25,7 @@ export default function Account() {
   }, [ user, loading ]);
 
   function reviewClickHandler(movieId) {
-    navigate(`/${movieId}`);
+    navigate(`/Open-Movies/${movieId}`);
   }
 
   async function handleDelete() {
