@@ -1,0 +1,65 @@
+#loginFormContainer {
+  border: 1px solid #f5f5f5;
+  max-width: 500px;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 15px;
+  padding: .5rem;
+  text-align: center;
+  display: grid;
+  gap: 20px;
+  background-color: #18202e;
+}
+
+#loginFormContainer>h1 {
+  padding-bottom: .5rem;
+  border-bottom: 1px solid #a0a0a0;
+}
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputContainer>input {
+  border: none;
+  max-width: 300px;
+  width: 100%;
+  border-radius: 25px;
+  padding: .3rem .5rem;
+  font-size: 1rem;
+}
+
+.inputContainer>input:focus {
+  outline: none;
+}
+
+#showPasswordToggle {
+  cursor: pointer;
+}
+
+#showPasswordToggle>input {
+  margin-left: 10px;
+}
+
+#loginSubmit {
+  border: 1px solid #000;
+}
+
+#loginSubmit:hover {
+  cursor: pointer;
+  color: #f5f5f5;
+  background-color: #111721;
+  border: 1px solid #f5f5f5;
+}
+
+.error,
+.inputContainer>.error:focus {
+  outline: 2px solid rgb(182, 47, 47);
+  color: red;
+}
+
+.inputErrorText {
+  color: red;
+}

@@ -1,0 +1,23 @@
+.navBar {
+  display: flex;
+  list-style: none;
+  background-color: #000;
+  gap: 20px;
+  color: #fff;
+  padding: .5rem;
+  padding-left: 1rem;
+}
+
+.navItem {
+  height: 100%;
+  border-bottom: 2px solid #000;
+}
+
+.navItem:hover {
+  border-bottom: 2px solid #ff0000;
+  cursor: pointer;
+}
+
+.navItem>a {
+  text-decoration: none;
+}

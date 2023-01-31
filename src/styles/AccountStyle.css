@@ -1,0 +1,19 @@
+#account {
+  padding: 1rem;
+}
+
+#accountInfo {
+  background-color: #18202e;
+  border: 1px solid #fff;
+  max-width: 507px;
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  box-sizing: border-box;
+  padding: .8rem;
+  margin-bottom: 1rem;
+}
+
+#accountInfo>button {
+  align-self: flex-start;
+}

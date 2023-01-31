@@ -1,0 +1,42 @@
+.moviesListControls {
+  padding: .5rem;
+}
+
+#genreSelect {
+  margin-right: 1rem;
+}
+
+.moviesList {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.movieCard {
+  max-width: 200px;
+  width: 100%;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.movieCard:hover {
+  cursor: pointer;
+}
+
+.movieCard>img {
+  max-width: 200px;
+}
+
+@media screen and (max-width: 432px) {
+  .movieCard {
+    max-width: 100px;
+  }
+
+  #moviesListControls {
+    text-align: center;
+  }
+}
