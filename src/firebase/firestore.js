@@ -83,8 +83,7 @@ function updateReview(id, updatedReview) {
 
 async function deleteUserDoc(id) {
   try {
-    const response = await getUserInfoById(id);
-    deleteDoc(doc(db, 'users', response.id));
+    deleteDoc(doc(db, 'users', id));
   } catch (error) {
     console.log(error);
     return error.message;

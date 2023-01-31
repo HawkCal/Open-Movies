@@ -37,8 +37,8 @@ async function resetPassword(email) {
 async function deleteAccount() {
   try {
     const currentUser = auth.currentUser;
-    await deleteUser(currentUser);
     deleteUserDoc(currentUser.uid);
+    deleteUser(currentUser);
   } catch (error) {
     console.log(error);
     return error.message;

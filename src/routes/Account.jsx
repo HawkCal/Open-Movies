@@ -30,6 +30,7 @@ export default function Account() {
 
   async function handleDelete() {
     const response = await deleteAccount();
+    if (!response) return;
     if (response.includes('login')) {
       alert('Log out and then log back in to delete account');
     }
