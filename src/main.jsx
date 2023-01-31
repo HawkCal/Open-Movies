@@ -11,31 +11,31 @@ import ResetPassword from './routes/ResetPassword';
 
 const router = createBrowserRouter([
   {
-    path: '/Open-Movies',
+    path: '/',
     element: <Root />,
     children: [
       {
-        path: '/Open-Movies',
+        path: '/',
         element: <Movies />
       },
       {
-        path: '/Open-Movies/:id',
+        path: '/:id',
         element: <MoviePage />
       },
       {
-        path: '/Open-Movies/login',
+        path: '/login',
         element: <Login />
       },
       {
-        path: '/Open-Movies/register',
+        path: '/register',
         element: <Register />
       },
       {
-        path: '/Open-Movies/account',
+        path: '/account',
         element: <Account />
       },
       {
-        path: '/Open-Movies/resetpassword',
+        path: '/resetpassword',
         element: <ResetPassword />
       }
     ]

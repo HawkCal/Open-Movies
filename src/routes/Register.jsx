@@ -157,7 +157,7 @@ export default function Register() {
               <input type='submit' id='loginSubmit' value='Register'></input>
             </div>
           </form>
-          <Link to='/Open-Movies/login' state={{ previousRoute: previousRoute }}>Already have an account? Log in</Link>
+          <Link to='/login' state={{ previousRoute: previousRoute }}>Already have an account? Log in</Link>
         </div>
       }
     </div>
