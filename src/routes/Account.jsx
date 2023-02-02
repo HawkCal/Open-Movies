@@ -44,6 +44,7 @@ export default function Account() {
             <div id='accountInfo'>
               <h2>{userData.userName}</h2>
               <p>{userData.email}</p>
+              {userData.isAdmin ? <Link to='/addmovie'>Add Movie</Link> : null}
               <button className='baseBtn' onClick={signUserOut}>Sign Out</button>
               <Link to='/resetpassword'>Reset Password</Link>
               <button className='baseBtn' onClick={handleDelete}>Delete Account</button>

@@ -1,13 +1,9 @@
 import { collection, getDoc, getDocs, addDoc, setDoc, query, where, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from './firebase';
 
-function addUser(email, uid, userName) {
+function addMovie(movieData) {
   try {
-    setDoc(doc(db, 'users', uid), {
-      email: email,
-      uid: uid,
-      userName: userName
-    });
+    addDoc(collection(db, 'movies'), movieData);
   } catch (error) {
     console.log(error);
     alert(error.message);
@@ -47,6 +43,19 @@ async function getMovieReviewsById(id) {
   return reviews;
 }
 
+function addUser(email, uid, userName) {
+  try {
+    setDoc(doc(db, 'users', uid), {
+      email: email,
+      uid: uid,
+      userName: userName
+    });
+  } catch (error) {
+    console.log(error);
+    alert(error.message);
+  }
+}
+
 async function getUserReviewsById(id) {
   let reviews = [];
   try {
@@ -69,6 +78,15 @@ async function getUserInfoById(id) {
   return userInfo;
 }
 
+async function deleteUserDoc(id) {
+  try {
+    deleteDoc(doc(db, 'users', id));
+  } catch (error) {
+    console.log(error);
+    return error.message;
+  }
+}
+
 function addReview(review) {
   addDoc(collection(db, 'reviews'), review);
 }
@@ -81,20 +99,12 @@ function updateReview(id, updatedReview) {
   updateDoc(doc(db, 'reviews', id), updatedReview);
 }
 
-async function deleteUserDoc(id) {
-  try {
-    deleteDoc(doc(db, 'users', id));
-  } catch (error) {
-    console.log(error);
-    return error.message;
-  }
-}
-
 export {
+  addMovie,
   getMovieById,
   getMovies,
-  addUser,
   getMovieReviewsById,
+  addUser,
   getUserReviewsById,
   addReview,
   deleteReview,
