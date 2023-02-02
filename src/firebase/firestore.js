@@ -43,6 +43,15 @@ async function getMovieReviewsById(id) {
   return reviews;
 }
 
+function deleteMovie(id) {
+  try {
+    deleteDoc(doc(db, 'movies', id));
+  } catch (error) {
+    console.log(error);
+    return error.message;
+  }
+}
+
 function addUser(email, uid, userName) {
   try {
     setDoc(doc(db, 'users', uid), {
@@ -78,7 +87,7 @@ async function getUserInfoById(id) {
   return userInfo;
 }
 
-async function deleteUserDoc(id) {
+function deleteUserDoc(id) {
   try {
     deleteDoc(doc(db, 'users', id));
   } catch (error) {
@@ -92,7 +101,12 @@ function addReview(review) {
 }
 
 function deleteReview(id) {
-  deleteDoc(doc(db, 'reviews', id));
+  try {
+    deleteDoc(doc(db, 'reviews', id));
+  } catch (error) {
+    console.log(error);
+    return error.message;
+  }
 }
 
 function updateReview(id, updatedReview) {
@@ -104,6 +118,7 @@ export {
   getMovieById,
   getMovies,
   getMovieReviewsById,
+  deleteMovie,
   addUser,
   getUserReviewsById,
   addReview,

@@ -1,5 +1,5 @@
 import { storage } from './firebase';
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { deleteObject, getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const BUCKET_URL = 'gs://classic-movies-d3b9a.appspot.com/posters';
 
@@ -11,6 +11,12 @@ async function uploadPoster(image) {
   return downloadUrl;
 }
 
+function deletePoster(imageName) {
+  const storageRef = ref(storage, `${BUCKET_URL}/${imageName}.jpg`);
+  deleteObject(storageRef);
+}
+
 export {
   uploadPoster,
+  deletePoster,
 };

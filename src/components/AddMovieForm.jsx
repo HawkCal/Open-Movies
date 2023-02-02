@@ -97,7 +97,11 @@ export default function AddMovieForm() {
           handleChange={handleChange}
           errorText={null}
         />
-        <input type='file' onInput={e => handleInput(e)}></input>
+        <label>
+          Upload Poster
+          <br></br>
+          <input id='fileSelect' type='file' onInput={e => handleInput(e)}></input>
+        </label>
         <textarea id='genres' placeholder='Genres' value={genres} onChange={e => handleChange(e)}></textarea>
         <div className='inputContainer'>
           <input id='submitBtn' type='submit' value='Submit' />

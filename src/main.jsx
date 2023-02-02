@@ -9,6 +9,7 @@ import Register from './routes/Register.jsx';
 import Account from './routes/Account';
 import ResetPassword from './routes/ResetPassword';
 import AddMovie from './routes/AddMovie';
+import DeleteMovie from './routes/DeleteMovie';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: '/addmovie',
         element: <AddMovie />
+      },
+      {
+        path: '/deletemovie',
+        element: <DeleteMovie />
       }
     ]
   }

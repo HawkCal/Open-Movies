@@ -47,8 +47,6 @@
   border: 1px solid #000;
 }
 
-
-
 .error,
 .inputContainer>.error:focus {
   outline: 2px solid rgb(182, 47, 47);
@@ -57,6 +55,11 @@
 
 .inputErrorText {
   color: red;
+}
+
+#fileSelect {
+  text-align: center;
+  color: #fff;
 }
 
 @media (hover: hover) {

@@ -1,0 +1,12 @@
+#deleteMovieContainer {
+  margin: 1rem;
+}
+
+.deleteMovieCard {
+  padding: .5rem;
+  margin: .5rem;
+  max-width: 500px;
+  border: 1px solid #fff;
+  display: flex;
+  justify-content: space-between;
+}
