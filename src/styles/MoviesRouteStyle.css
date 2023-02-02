@@ -11,7 +11,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  justify-content: center;
 }
 
 .movieCard {
@@ -31,6 +30,17 @@
   max-width: 200px;
 }
 
+#pagesList {
+  display: flex;
+  list-style: none;
+  gap: 5px;
+  padding: 1rem;
+}
+
+#activePage {
+  border-bottom: 2px solid red;
+}
+
 @media screen and (max-width: 432px) {
   .movieCard {
     max-width: 100px;
@@ -38,5 +48,13 @@
 
   #moviesListControls {
     text-align: center;
+  }
+
+  .moviesList {
+    justify-content: center;
+  }
+
+  #pagesList {
+    justify-content: center;
   }
 }

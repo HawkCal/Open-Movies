@@ -5,22 +5,36 @@ import '../styles/MoviesRouteStyle.css';
 
 export default function Movies() {
   let [ movies, setMovies ] = useState([]);
-  const [ displayMovies, setDisplayMovies ] = useState([]);
+  const moviesPerPage = 27;
+  const [ page, setPage ] = useState(1);
+  const [ filteredMovies, setFilteredMovies ] = useState([]);
   const [ displayGenre, setDisplayGenre ] = useState('');
   const [ searchValue, setSearchValue ] = useState('');
 
   useEffect(() => {
     getMovies()
       .then(res => {
+        const splitMovies = splitMoviesByPage(res);
         setMovies(res);
-        setDisplayMovies(res);
+        setFilteredMovies(splitMovies);
       });
   }, []);
 
   useEffect(() => {
-    let filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchValue.toLowerCase()));
-    setDisplayMovies(filteredMovies);
-  }, [ searchValue ]);
+    const filteredByGenre = movies.filter(movie => [ '', ...movie.genres ].includes(displayGenre));
+    const filteredByTitle = filteredByGenre.filter(movie => movie.title.toLowerCase().includes(searchValue.toLowerCase()));
+    setFilteredMovies(splitMoviesByPage(filteredByTitle));
+  }, [ searchValue, displayGenre ]);
+
+  function splitMoviesByPage(moviesList) {
+    let splitMovies = [];
+    let pages = Math.ceil(moviesList.length / moviesPerPage);
+    for (let i = 0; i < pages; i++) {
+      splitMovies.push(moviesList.slice((i) * moviesPerPage, moviesPerPage * (i + 1)));
+    }
+
+    return splitMovies;
+  }
 
   function handleChange(e) {
     e.preventDefault();
@@ -52,16 +66,14 @@ export default function Movies() {
       </div>
       <ul className='moviesList'>
         {
-          displayMovies.length > 0 ?
-            displayMovies.map(movie => {
-              return [ ...movie.genres, '' ].includes(displayGenre) ?
-                <MovieCard key={movie.id} data={movie} />
-                :
-                null;
-            })
+          filteredMovies.length > 0 ?
+            filteredMovies[ page - 1 ].map(movie => <MovieCard key={movie.id} data={movie} />)
             :
             ''
         }
+      </ul>
+      <ul id='pagesList'>
+        {filteredMovies.map((arr, index) => <li className='pageDisplay' id={page === index + 1 ? 'activePage' : ''} key={index} onClick={() => setPage(index + 1)}>{index + 1}</li>)}
       </ul>
     </div>
   );
