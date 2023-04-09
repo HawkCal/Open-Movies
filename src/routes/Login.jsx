@@ -85,7 +85,7 @@ export default function Login() {
   }
 
   return (
-    <div>
+    <>
       {
         user || loading ?
           ''
@@ -131,6 +131,6 @@ export default function Login() {
             </div>
           </div>
       }
-    </div>
+    </>
   );
 }

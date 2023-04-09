@@ -18,9 +18,10 @@ export default function MoviePage() {
   }, []);
 
   return (
-    <div id='moviePage'>
-      {
-        data ?
+    <>
+      <div id='moviePage'>
+        {
+          data &&
           <>
             <div id='movieContainer'>
               <h1>{data.title}</h1>
@@ -35,7 +36,11 @@ export default function MoviePage() {
                 </iframe>
               </div>
               <div id='movieInfoContainer'>
-                <img src={data.posterUrl} alt='poster'></img>
+                <picture>
+                  <source srcSet={data.posterWebp} />
+                  <source srcSet={data.posterJpg} />
+                  <img src={data.posterJpg} alt='poster'></img>
+                </picture>
                 <div id='movieInfo'>
                   <div id='movieInfoHeader'>
                     <p>{data.releaseDate}</p>
@@ -58,9 +63,8 @@ export default function MoviePage() {
               />
             </div>
           </>
-          :
-          ''
-      }
-    </div>
+        }
+      </div>
+    </>
   );
 }

@@ -1,0 +1,105 @@
+#landingHeader {
+  position: relative;
+}
+
+#landingImage {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  object-position: 50% 55%;
+}
+
+#landingLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.landingLink {
+  text-align: center;
+  width: 25%;
+  border: 1px solid #fff;
+  position: relative;
+  box-sizing: border-box;
+  border-bottom: 1px solid #fff;
+  overflow: hidden;
+  min-width: 150px;
+}
+
+.landingLink::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  transition: background-color .5s ease;
+  opacity: .5;
+  z-index: 1;
+}
+
+.landingLink:hover::before {
+  background-color: #00000000;
+  transition: background-color .5s ease;
+}
+
+.landingLink::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.landingLink a {
+  font-size: 2rem;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: translateY(-50%);
+  text-decoration: none;
+  transition: top 1s ease;
+  text-shadow:
+    0.05em 0 black,
+    0 0.05em black,
+    -0.05em 0 black,
+    0 -0.05em black,
+    -0.05em -0.05em black,
+    -0.05em 0.05em black,
+    0.05em -0.05em black,
+    0.05em 0.05em black;
+  z-index: 2;
+}
+
+.landingLink:hover a {
+  top: 45%;
+  transition: top .5s ease;
+}
+
+.genreImage {
+  background: #000;
+  scale: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: translateY(-50%);
+  box-sizing: border-box;
+  border-bottom: 1px solid #fff;
+  filter: grayscale(1);
+  transition: scale 1s ease;
+}
+
+.landingLink:hover>.genreImage {
+  scale: 1.05;
+  transition: scale .5s ease;
+}

@@ -52,27 +52,29 @@ export default function ResetPassword() {
   }
 
   return (
-    <div id='loginFormContainer'>
-      <h1>Send Password Reset Email</h1>
-      {
-        isEmailSent ?
-          <p>Password reset email has been sent</p>
-          :
-          <form id='loginForm' onSubmit={e => handleSubmit(e)}>
-            <InputContainer
-              type='text'
-              id='emailInput'
-              inputClassName={emailClassName}
-              placeHolder='Email'
-              handleChange={handleChange}
-              errorText={emailErrorText}
-            />
-            <div className='inputContainer'>
-              <input type='submit' id='loginSubmit' value='Send Email' />
-            </div>
-          </form>
-      }
-      <Link to='/login' state={{ previousRoute: location.pathname }}>Log in</Link>
-    </div>
+    <>
+      <div id='loginFormContainer'>
+        <h1>Send Password Reset Email</h1>
+        {
+          isEmailSent ?
+            <p>Password reset email has been sent</p>
+            :
+            <form id='loginForm' onSubmit={e => handleSubmit(e)}>
+              <InputContainer
+                type='text'
+                id='emailInput'
+                inputClassName={emailClassName}
+                placeHolder='Email'
+                handleChange={handleChange}
+                errorText={emailErrorText}
+              />
+              <div className='inputContainer'>
+                <input type='submit' id='loginSubmit' value='Send Email' />
+              </div>
+            </form>
+        }
+        <Link to='/login' state={{ previousRoute: location.pathname }}>Log in</Link>
+      </div>
+    </>
   );
 }

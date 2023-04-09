@@ -22,7 +22,7 @@ export default function AddMovie() {
   }, [ user, loading ]);
 
   return (
-    <div>
+    <>
       {
         !isAdmin
           ?
@@ -30,6 +30,6 @@ export default function AddMovie() {
           :
           <AddMovieForm />
       }
-    </div>
+    </>
   );
 }

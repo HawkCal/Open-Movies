@@ -10,6 +10,7 @@ import Account from './routes/Account';
 import ResetPassword from './routes/ResetPassword';
 import AddMovie from './routes/AddMovie';
 import DeleteMovie from './routes/DeleteMovie';
+import LandingPage from './routes/LandingPage';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
+        element: <LandingPage />
+      },
+      {
+        path: '/movies/:genre',
         element: <Movies />
       },
       {

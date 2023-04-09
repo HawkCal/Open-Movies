@@ -1,4 +1,4 @@
-import { collection, getDoc, getDocs, addDoc, setDoc, query, where, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { collection, getDoc, getDocs, addDoc, setDoc, query, where, deleteDoc, doc, updateDoc, limit, startAfter, orderBy } from 'firebase/firestore';
 import { db } from './firebase';
 
 function addMovie(movieData) {
@@ -10,7 +10,49 @@ function addMovie(movieData) {
   }
 }
 
-async function getMovies() {
+async function getNextMovies(prevPage = false) {
+  let movies = [];
+  if (!prevPage) {
+    try {
+      const response = await getDocs(query(collection(db, "movies"), orderBy("title"), limit(15)));
+      response.forEach(doc => movies.push({ ...doc.data(), id: doc.id }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  else {
+    try {
+      const response = await getDocs(query(collection(db, "movies"), orderBy("title"), startAfter(prevPage.title), limit(15)));
+      response.forEach(doc => movies.push({ ...doc.data(), id: doc.id }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  return movies;
+}
+
+async function getMoviesByGenre(genre, prevPage = false) {
+  let movies = [];
+  if (!prevPage) {
+    try {
+      const response = await getDocs(query(collection(db, "movies"), where("genres", "array-contains", genre), orderBy("title"), limit(15)));
+      response.forEach(doc => movies.push({ ...doc.data(), id: doc.id }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  else {
+    try {
+      const response = await getDocs(query(collection(db, "movies"), where("genres", "array-contains", genre), orderBy("title"), startAfter(prevPage.title), limit(15)));
+      response.forEach(doc => movies.push({ ...doc.data(), id: doc.id }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  return movies;
+}
+
+async function getAllMovies() {
   let allMovies = [];
   try {
     const response = await getDocs(collection(db, 'movies'));
@@ -116,7 +158,9 @@ function updateReview(id, updatedReview) {
 export {
   addMovie,
   getMovieById,
-  getMovies,
+  getNextMovies,
+  getAllMovies,
+  getMoviesByGenre,
   getMovieReviewsById,
   deleteMovie,
   addUser,
@@ -125,5 +169,5 @@ export {
   deleteReview,
   updateReview,
   getUserInfoById,
-  deleteUserDoc
+  deleteUserDoc,
 };

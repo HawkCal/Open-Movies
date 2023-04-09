@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getUserInfoById } from '../firebase/firestore';
-import { getMovies } from '../firebase/firestore';
+import { getAllMovies } from '../firebase/firestore';
 import DeleteMovieCard from '../components/DeleteMovieCard';
 import '../styles/DeleteMovieStyle.css';
 
@@ -26,24 +26,26 @@ export default function DeleteMovie() {
   }, [ user, loading ]);
 
   useEffect(() => {
-    getMovies()
+    getAllMovies()
       .then(res => setMovies(res));
   }, [ moviesToggle ]);
 
   return (
-    <div id='deleteMovieContainer'>
-      {
-        !isAdmin
-          ?
-          ''
-          :
-          <>
-            <h1>Delete Movies</h1>
-            <ul id='deleteMovieList'>
-              {movies ? movies.map(movie => <DeleteMovieCard key={movie.id} movieData={movie} moviesToggle={moviesToggle} setMoviesToggle={setMoviesToggle} />) : ''}
-            </ul>
-          </>
-      }
-    </div>
+    <>
+      <div id='deleteMovieContainer'>
+        {
+          !isAdmin
+            ?
+            ''
+            :
+            <>
+              <h1>Delete Movies</h1>
+              <ul id='deleteMovieList'>
+                {movies ? movies.map(movie => <DeleteMovieCard key={movie.id} movieData={movie} moviesToggle={moviesToggle} setMoviesToggle={setMoviesToggle} />) : ''}
+              </ul>
+            </>
+        }
+      </div>
+    </>
   );
 }

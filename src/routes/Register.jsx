@@ -101,7 +101,7 @@ export default function Register() {
   }
 
   return (
-    <div>
+    <>
       {user || loading ?
         ''
         :
@@ -160,6 +160,6 @@ export default function Register() {
           <Link to='/login' state={{ previousRoute: previousRoute }}>Already have an account? Log in</Link>
         </div>
       }
-    </div>
+    </>
   );
 }

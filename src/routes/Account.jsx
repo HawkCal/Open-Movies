@@ -37,36 +37,34 @@ export default function Account() {
   }
 
   return (
-    <div>
+    <>
       {
-        user ?
-          <div id='account'>
-            <div id='accountInfo'>
-              <h2>{userData.userName}</h2>
-              <p>{userData.email}</p>
-              {
-                userData.isAdmin
-                  ?
-                  <div>
-                    <Link to='/addmovie'>Add Movie</Link>
-                    <br></br>
-                    <Link to='/deletemovie'>Delete Movie</Link>
-                  </div>
-                  :
-                  null
-              }
-              <button className='baseBtn' onClick={signUserOut}>Sign Out</button>
-              <Link to='/resetpassword'>Reset Password</Link>
-              <button className='baseBtn' onClick={handleDelete}>Delete Account</button>
-            </div>
-            <h3>Reviews</h3>
-            <div id='reviewsContainer'>
-              <ReviewsList reviews={reviews} reviewClickHandler={reviewClickHandler} />
-            </div>
+        user &&
+        <div id='account'>
+          <div id='accountInfo'>
+            <h2>{userData.userName}</h2>
+            <p>{userData.email}</p>
+            {
+              userData.isAdmin
+                ?
+                <div>
+                  <Link to='/addmovie'>Add Movie</Link>
+                  <br></br>
+                  <Link to='/deletemovie'>Delete Movie</Link>
+                </div>
+                :
+                null
+            }
+            <button className='baseBtn' onClick={signUserOut}>Sign Out</button>
+            <Link to='/resetpassword'>Reset Password</Link>
+            <button className='baseBtn' onClick={handleDelete}>Delete Account</button>
           </div>
-          :
-          ''
+          <h3>Reviews</h3>
+          <div id='reviewsContainer'>
+            <ReviewsList reviews={reviews} reviewClickHandler={reviewClickHandler} />
+          </div>
+        </div>
       }
-    </div>
+    </>
   );
 };

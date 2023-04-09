@@ -37,3 +37,9 @@ textarea {
     border: 1px solid #fff;
   }
 }
+
+#root {
+  margin: auto;
+  max-width: 1500px;
+  height: 100vh;
+}

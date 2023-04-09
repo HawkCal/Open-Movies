@@ -135,7 +135,7 @@
 
 
 @media screen and (max-width: 550px) {
-  #movieInfoContainer>img {
+  #movieInfoContainer>picture {
     display: none;
   }
 
